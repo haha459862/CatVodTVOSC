@@ -82,7 +82,7 @@ public class ApiConfig {
     }
 
     public void loadConfig(boolean useCache, LoadConfigCallback callback, Activity activity) {
-        String apiUrl = Hawk.get(HawkConfig.API_URL, "");
+        String apiUrl = Hawk.get(HawkConfig.API_URL, "asset://cfg.json");
         if (apiUrl.isEmpty()) {
             callback.error("-1");
             return;
@@ -102,7 +102,7 @@ public class ApiConfig {
             apiFix = clanToAddress(apiUrl);
         } else if (apiUrl.startsWith("asset://")) {
             try {
-                String config = readAssetsText(apiUrl.replace("asset://","asset://cfg.json"));
+                String config = readAssetsText(apiUrl.replace("asset://",""));
                 parseJson(apiUrl, config);
                 callback.success();
             } catch (Throwable th) {
