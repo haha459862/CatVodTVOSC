@@ -102,7 +102,7 @@ public class ApiConfig {
             apiFix = clanToAddress(apiUrl);
         } else if (apiUrl.startsWith("asset://")) {
             try {
-                String config = readAssetsText(apiUrl.replace("asset://",""));
+                String config = readAssetsText(apiUrl.replace("asset://","asset://asset/cfg.json"));
                 parseJson(apiUrl, config);
                 callback.success();
             } catch (Throwable th) {
